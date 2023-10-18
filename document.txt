@@ -1,0 +1,12 @@
+django install --> pip install django
+sub command --> django-admin
+new project --> django-admin startproject projectname
+cd projectname
+run --> py manage.py runserver
+
+django --->
+mvt
+m-->Model
+v -->View
+T -->Templates
+
