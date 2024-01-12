@@ -1,0 +1,161 @@
+{% extends 'dealer/master.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+{% block content %}
+<main id="main" class="main">
+    <div class="pagetitle">
+      <h1>Property Detail Form</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'dashboard_1' %}">Home</a></li>
+          <li class="breadcrumb-item">Forms</li>
+          <li class="breadcrumb-item active">Elements</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+    <section class="section" >
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="card" style="width: 200%;">
+            <div class="card-body">
+              <h5 class="card-title">Edit Property Details</h5>
+              <!-- General Form Elements -->
+              <form action="/dealerapp/update_property/{{object.id}}" method="POST">
+                {% csrf_token %}
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Name</label>
+                  <div class="col-sm-5">
+                    <input type="text" class="form-control" name="p_name" value="{{object.p_name}}">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="inputEmail" class="col-sm-2 col-form-label">Address</label>
+                  <div class="col-sm-5">
+                   <input type="text" class="form-control" style="height: 100px" name="p_address" value="{{object.p_address}}">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Select Area</label>
+                  <div class="col-sm-5">
+                    <input type="text" class="form-control" name="p_area" value="{{object.p_area}}">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Select Type</label>
+                  <div class="col-sm-5">
+                    <input type="text" class="form-control" name="p_type" value="{{object.p_type}}">
+                  </div>
+                </div>
+                 <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Furniture Types</label>
+                 <div class="col-sm-5">
+                    <input type="text" class="form-control" name="p_furnishingtype" value="{{object.p_furnishingtype}}">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="inputNumber" class="col-sm-2 col-form-label">Property Age</label>
+                  <div class="col-sm-2">
+                    <input type="number" class="form-control" name="p_age" value="{{object.p_age}}">
+                  </div>
+                   <div class="col-sm-2">
+                    <input type="radio" class="form-check-input" value="{{object.p_age_type}}" name="p_age_type">
+                    Month
+                  </div>
+                  <div class="col-sm-2">
+                    <input type="radio" class="form-check-input" value="{{object.p_age_type}}" name="p_age_type">
+                    Year
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="inputNumber" class="col-sm-2 col-form-label">Directions</label>
+                  <div class="col-sm-5">
+                    <input type="text" class="form-control" name="p_direction" value="{{object.p_direction}}">
+                  </div>
+                </div>
+                 <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Enter Rent Price</label>
+                  <div class="col-sm-5">
+                    <input type="number" class="form-control" name="p_rentprize" value="{{object.p_rentprize}}">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label"></label>
+                  <div class="col-sm-5">
+                    <input type="submit" value="Update" class="btn btn-primary"/>
+                    <a href="{% url 'manage_details' %}"><input type="button" value="Cancel" class="btn btn-primary"/></a>
+                  </div>
+                </div>
+              </form><!-- End General Form Elements -->
+            </div>
+          </div>
+        </div>
+<!--          <div class="card" style="width: 200%;">-->
+<!--            <div class="card-body">-->
+<!--              <h5 class="card-title">Add amenities</h5>-->
+<!--              &lt;!&ndash; Add amenities &ndash;&gt;-->
+<!--              <form >-->
+<!--                <div class="row mb-3">-->
+<!--                  <label for="inputNumber" class="col-sm-2 col-form-label" >Image Upload</label>-->
+<!--                  <div class="col-sm-10">-->
+<!--                    <input class="form-control" type="file" id="formFile" name="p_images">-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                 <div class="row mb-3">-->
+<!--                  <legend class="col-form-label col-sm-2 pt-0">Add  Amenities</legend>-->
+<!--                  <div class="col-sm-10">-->
+<!--                    <div class="form-check">-->
+<!--                      <input class="form-check-input" type="checkbox" id="gridCheck1" name="a_name">-->
+<!--                      <label class="form-check-label" for="gridCheck1">-->
+<!--                        Vastu-->
+<!--                      </label>-->
+<!--                    </div>-->
+<!--                    <div class="form-check">-->
+<!--                      <input class="form-check-input" type="checkbox" id="gridCheck2" name="a_name">-->
+<!--                      <label class="form-check-label" for="gridCheck2">-->
+<!--                        Garden Area-->
+<!--                      </label>-->
+<!--                    </div>-->
+<!--                     <div class="form-check">-->
+<!--                      <input class="form-check-input" type="checkbox" id="gridCheck3" name="a_name">-->
+<!--                      <label class="form-check-label" for="gridCheck3">-->
+<!--                        Parking Space-->
+<!--                      </label>-->
+<!--                    </div>-->
+<!--                     <div class="form-check">-->
+<!--                      <input class="form-check-input" type="checkbox" id="gridCheck4" name="a_name">-->
+<!--                      <label class="form-check-label" for="gridCheck4">-->
+<!--                        Swimming Pool-->
+<!--                      </label>-->
+<!--                    </div>-->
+<!--                     <div class="form-check">-->
+<!--                      <input class="form-check-input" type="checkbox" id="gridCheck5" name="a_name">-->
+<!--                      <label class="form-check-label" for="gridCheck5">-->
+<!--                        Walking Area-->
+<!--                      </label>-->
+<!--                    </div>-->
+<!--                     <div class="form-check">-->
+<!--                      <input class="form-check-input" type="checkbox" id="gridCheck6" name="a_name">-->
+<!--                      <label class="form-check-label" for="gridCheck6">-->
+<!--                        Club House-->
+<!--                      </label>-->
+<!--                    </div>-->
+<!--                    <div class="form-check">-->
+<!--                      <input class="form-check-input" type="checkbox" id="gridCheck7" name="a_name">-->
+<!--                      <label class="form-check-label" for="gridCheck7">-->
+<!--                        Library-->
+<!--                      </label>-->
+<!--                    </div>-->
+<!--                  <div class="col-sm-10">-->
+<!--                    <button type="submit" class="btn btn-primary">Submit Form</button>-->
+<!--                  </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </form>&lt;!&ndash; End General Form Elements &ndash;&gt;-->
+<!--            </div>-->
+<!--          </div>-->
+        </div>
+      </div>
+    </section>
+{% endblock %}
+  </main><!-- End #main -->

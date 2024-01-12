@@ -1,0 +1,163 @@
+{% extends 'dealer/master.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+{% block content %}
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Property Details</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Home</a></li>
+          <li class="breadcrumb-item">Forms</li>
+          <li class="breadcrumb-item active">Elements</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section" >
+      <div class="row">
+        <div class="col-lg-6">
+
+          <div class="card" style="width: 200%;">
+            <div class="card-body">
+              <h5 class="card-title">Property Details Forms</h5>
+
+              <!-- Property Details Form -->
+              <form method="POST" enctype="multipart/form-data">
+                  {% csrf_token %}
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Name</label>
+                  <div class="col-sm-6">
+                    <input type="text" class="form-control" name="p_name">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label for="inputEmail" class="col-sm-2 col-form-label">Address</label>
+                  <div class="col-sm-6">
+                   <input type="text" class="form-control" style="height: 100px" name="p_address">
+                  </div>
+                </div>
+
+
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Add Area</label>
+                  <div class="col-sm-6">
+                    <input type="text" class="form-control" name="p_area">
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Property Type</label>
+                  <div class="col-sm-6">
+                    <select class="form-select" aria-label="Default select example" name="p_type">
+                      <option value="BUNGLOW" >Bunglow</option>
+                      <option value="APPARTMENT" >Appartment</option>
+                      <option value="ROW_HOUSE" >Raw House</option>
+                    </select>
+                  </div>
+                </div>
+
+                 <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label">Furniture Types</label>
+                  <div class="col-sm-6">
+                    <select class="form-select" aria-label="Default select example" name="p_furnishingtype">
+                      <option value="FULLY" >Fully Furnished</option>
+                      <option value="SEMI" >Semi Furnished</option>
+                      <option value="NOT" >Not Furnished</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="inputNumber" class="col-sm-2 col-form-label">Property Age</label>
+                  <div class="col-sm-2">
+                    <input type="number" class="form-control" name="p_age">
+                  </div>
+                  <div class="col-sm-2">
+                    <input type="radio" class="form-check-input" value="month" name="p_age_type">
+                    Month
+                  </div>
+                  <div class="col-sm-2">
+                    <input type="radio" class="form-check-input" value="year" name="p_age_type">
+                    Year
+                  </div>
+                </div>
+
+                <fieldset class="row mb-3">
+                  <legend class="col-form-label col-sm-2 pt-0">Directions</legend>
+                  <div class="col-sm-10">
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="p_direction" id="gridRadios1" value="north">
+                      <label class="form-check-label" for="gridRadios1">
+                        North
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="p_direction" id="gridRadios2" value="south">
+                      <label class="form-check-label" for="gridRadios2">
+                        South
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="p_direction" id="gridRadios3" value="east">
+                      <label class="form-check-label" for="gridRadios2">
+                        East
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="p_direction" id="gridRadios4" value="west">
+                      <label class="form-check-label" for="gridRadios2">
+                        West
+                      </label>
+                    </div>
+                  </div>
+                </fieldset>
+
+                 <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Enter Rent Price</label>
+                  <div class="col-sm-2">
+                    <input type="number" class="form-control" name="p_rentprize">
+                  </div>
+                </div>
+
+                   <div class="row mb-3">
+                  <label for="inputNumber" class="col-sm-2 col-form-label">Upload Property Images</label>
+                  <div class="col-sm-4">
+                    <input class="form-control" type="file" id="formFile" name="p_image" multiple>
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <label for="inputText" class="col-sm-2 col-form-label">Add Amenities</label>
+                  <div class="col-sm-6">
+                    <input type="text" class="form-control" name="a_name">
+                  </div>
+                </div>
+
+                <div class="row mb-3">
+                  <div class="col-sm-10">
+                    <button style="margin-left: 500px;" type="submit" class="btn btn-primary">Submit Form</button>
+                  </div>
+                </div>
+
+
+                 <div class="col-lg-6">
+
+
+              </form><!-- End General Form Elements -->
+
+            </div>
+          </div>
+
+        </div>
+
+
+        </div>
+      </div>
+    </section>
+{% endblock %}
+  </main><!-- End #main -->
+

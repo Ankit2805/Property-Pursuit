@@ -1,0 +1,71 @@
+{% extends 'dealer/master.html' %}
+{% load static %}
+{% block content %}
+  <main id="main" class="main">
+    <div class="pagetitle">
+      <h1>Data Tables</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item">Tables</li>
+          <li class="breadcrumb-item active">Data</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Properties</h5>
+              <!-- Table with stripped rows -->
+              <table class="table datatable">
+                  <tr>
+                    <thead>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Area</th>
+                    <th scope="col">Rent Price</th>
+                    <th scope="col">Amenities</th>
+                    <th scope="col">Images</th>
+                    <th scope="col">Manage</th>
+                  </tr>
+                    </thead>
+                <tbody>
+                 {% for d in P_E %}
+                 <tr>
+                   <td>{{d.id}}</td>
+                   <td>{{d.p_name}}</td>
+                   <td>{{d.p_address}}</td>
+                   <td>{{d.p_area}}</td>
+                   <td>{{d.p_rentprize}}</td>
+                   <td>{{d.a_name}}</td>
+                   <td>
+                     <div class="carousel-inner">
+                          {% for image in photos.all %}
+                          <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
+                            <img src="{{ image.p_images }}" height= "250px" width="200px" class="d-block w-100" alt="">
+                          </div>
+                        {% endfor %}
+                   </td>
+                      </div>
+
+                  <td>
+<!--                    <a href="">View Details</a>  -->
+                    <a href="{% url 'edit_property' d.id %}"><i class="bi bi-pencil-square"></i></a>
+                    <a href="{% url 'delete_property' d.pk %}"><i class="bi bi-trash3"></i></a>
+                  </td>
+            </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+              <!-- End Table with stripped rows -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main><!-- End #main -->
+{% endblock %}
+  </main><!-- End #main -->
