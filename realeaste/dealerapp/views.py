@@ -66,6 +66,11 @@ def property_manage_details(request):
         photos = models.Image.objects.all()
         return render(request, 'dealer/property-manage.html', {'P_E': data,'photos': photos})
 
+def showdetails(request,id):
+   d = models.property.objects.get(id=id)
+   i = models.Image.objects.filter(id=id)
+   return render(request, 'dealer/Show_Details.html',{'object':d})
+
 def edit_property(request,id):
     a=models.property.objects.get(id=id)
     return render(request,'dealer/edit_property.html',{'object':a})
@@ -79,6 +84,7 @@ def update_property(request,id):
             print("akjndkjn",a)
             return redirect(property_manage_details)
         else:
+            print(updatesform.errors)
             return HttpResponse("<h1>Error</h1>")
     else:
         return render(request, 'dealer/edit_property.html',{'object':a})

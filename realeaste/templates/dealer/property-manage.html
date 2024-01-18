@@ -41,8 +41,8 @@
                    <td>{{d.p_area}}</td>
                    <td>{{d.p_rentprize}}</td>
                    <td>{{d.a_name}}</td>
-                   <td>
-                     <div class="carousel-inner">
+                     <td>
+                        <div class="carousel-inner">
                           {% for image in photos.all %}
                           <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
                             <img src="{{ image.p_images }}" height= "250px" width="200px" class="d-block w-100" alt="">
@@ -50,12 +50,11 @@
                         {% endfor %}
                    </td>
                       </div>
-
-                  <td>
-<!--                    <a href="">View Details</a>  -->
+              <td>
                     <a href="{% url 'edit_property' d.id %}"><i class="bi bi-pencil-square"></i></a>
-                    <a href="{% url 'delete_property' d.pk %}"><i class="bi bi-trash3"></i></a>
-                  </td>
+                  <a href="{% url 'delete_property' d.pk %}"><i class="bi bi-trash3"></i></a>
+                  <a href="{% url 'showdetails' d.id %}"><i class="bi bi-list"></i>Show More Details</a>
+              </td>
             </tr>
                   {% endfor %}
                 </tbody>

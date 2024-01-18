@@ -1,0 +1,76 @@
+{% extends 'dealer/master.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+{% block content %}
+<head>
+<title></title>
+<style>
+  /* General styling for the page */
+  body {
+    font-family: sans-serif; /* Use a sans-serif font for a clean look */
+    margin: 40px; /* Add some space around the edges */
+  }
+
+  /* Styling for the property information blocks */
+  .info-block {
+    display: flex; /* Arrange items in a row */
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    margin: 10px 0; /* Add space between blocks */
+  }
+
+  .info-block > div {
+    flex: 1; /* Make each item take up equal space */
+    padding: 10px; /* Add padding around the content */
+    border: 1px solid #ccc; /* Add a border around each item */
+    margin: 5px; /* Add space between items */
+  }
+</style>
+
+</head>
+
+<body>
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Property Details</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'dashboard_1' %}">Home</a></li>
+          <li class="breadcrumb-item">Forms</li>
+          <li class="breadcrumb-item active">Elements</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+<div class="card">
+<div class="card-body">
+
+  <div class="info-block">
+    <div>Property ID: {{object.id}}</div>
+    <div>Property Name: {{object.p_name}}</div>
+    <div>Address: {{object.p_address}}</div>
+    <div>Area: {{object.p_area}}</div>
+  </div>
+
+  <div class="info-block">
+   <div>Property Type: {{object.p_type}}</div>
+    <div>Furniture Type: {{object.p_furnishingtype}}</div>
+    <div>Property Age: {{object.p_age}}{{object.p_age_type}}</div>
+    <div>Direction: {{object.p_direction}}</div>
+  </div>
+
+  <div class="info-block">
+    <div>Rent: {{object.p_rentprize}}</div>
+<!--    <div>Details: 3 bedrooms, 2 baths, 1500 sqft</div>-->
+    <div>Amenities: {{object.a_name}}</div>
+    <div>Property Images:</div>
+  </div>
+    <a style="margin-left: 450px;" href="{% url 'manage_details' %}"><input type="button" value="Go Back" class="btn btn-primary"/></a>
+    <a href="{% url 'edit_property' object.id %}"><input type="button" value="Edit Details" class="btn btn-primary"/></a>
+</div>
+</div>
+{% endblock %}
+</main>
+</body>
+</html>
