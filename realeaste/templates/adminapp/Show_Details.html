@@ -1,0 +1,95 @@
+{% extends 'adminapp/master.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+{% block content %}
+<head>
+<title></title>
+<style>
+  /* General styling for the page */
+  body {
+    font-family: sans-serif; /* Use a sans-serif font for a clean look */
+    margin: 40px; /* Add some space around the edges */
+  }
+
+  /* Styling for the property information blocks */
+  .info-block {
+    display: flex; /* Arrange items in a row */
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    margin: 10px 0; /* Add space between blocks */
+  }
+
+  .info-block > div {
+    flex: 1; /* Make each item take up equal space */
+    padding: 10px; /* Add padding around the content */
+    border: 1px solid #ccc; /* Add a border around each item */
+    margin: 5px; /* Add space between items */
+  }
+</style>
+
+</head>
+
+<body>
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1 style="color: white;">Property Details</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'dashboard' %}" style="color: white;">Home</a></li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+<div class="card">
+<div class="card-body">
+
+    <div class="info-block">
+         <div class="carousel-inner">
+             <div>Property Images:</div>
+                     <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                              <div class="carousel-inner">
+                                {% for image in photos %}
+                                <div class="carousel-item {% if forloop.counter %} active {% endif %}">
+                                  <img src="{{ image.p_image.url }}" alt="photo" height="30%" width="" class="d-block w-50">
+                                </div>
+                                {% endfor %}
+                              </div>
+                              <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                                <span  aria-hidden="true"></span>
+                                <span class="sr-only"><i class="bi bi-arrow-left-circle"></i></span>
+                              </a>
+                              <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                                <span aria-hidden="true"></span>
+                                <span class="sr-only"><i class="bi bi-arrow-right-circle"></i></span>
+                              </a>
+                            </div>
+                   </div>
+    </div>
+  <div class="info-block">
+    <div>Property ID: {{object.id}}</div>
+    <div>Property Name: {{object.p_name}}</div>
+    <div>Address: {{object.p_address}}</div>
+    <div>Area: {{object.p_area}}</div>
+  </div>
+
+  <div class="info-block">
+   <div>Property Type: {{object.p_type}}</div>
+    <div>Furniture Type: {{object.p_furnishingtype}}</div>
+    <div>Property Age: {{object.p_age}}{{object.p_age_type}}</div>
+    <div>Direction: {{object.p_direction}}</div>
+  </div>
+
+  <div class="info-block">
+    <div>Rent: {{object.p_rentprize}}</div>
+<!--    <div>Details: 3 bedrooms, 2 baths, 1500 sqft</div>-->
+    <div>Amenities: {{object.a_name}}</div>
+  </div>
+    <a style="margin-left: 430px;" href="{% url 'manage_details' %}"><input type="button" value="Go Back" class="btn btn-primary"/></a>
+    <a href="{% url 'edit-details' object.id %}"><input type="button" value="Edit Details" class="btn btn-primary"/></a>
+</div>
+</div>
+</main>
+{% endblock %}
+</body>
+</html>

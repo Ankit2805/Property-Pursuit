@@ -13,3 +13,9 @@ class updateform(ModelForm):
     class Meta:
         model = models.property
         fields = "__all__"
+
+class MyImageForm(forms.ModelForm):
+    class Meta:
+        model = models.Image
+        fields = ['p_image']
+        exclude = ('proty',)

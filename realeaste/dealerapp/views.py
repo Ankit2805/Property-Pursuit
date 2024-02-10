@@ -43,19 +43,29 @@ def register_1(request):
 def dashboard_1(request):
     return render(request,'dealer/index.html')
 
+def upload_image(request):
+    if request.method == 'POST':
+        form = forms.MyImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect(property_manage_details)  # Redirect to a success page
+    else:
+        form = forms.MyImageForm()
+    return render(request, 'dealer/upload_image.html', {'form': form})
+
 def property_add_details(request):
     if request.method == "POST":
         detailform = forms.detailsform(request.POST,request.FILES)
         if detailform.is_valid():
             object = detailform.save(commit=False)
             object.save()
+
             photos = request.FILES.getlist('p_image')
             for image in photos:
-                imge = str(image)
-                img = models.Image.objects.create(p_image=imge,
+                img = models.Image.objects.create(p_image=image,
                                                   proty=object)
                 print("photo added")
-            return redirect(dashboard_1)
+            return redirect(property_manage_details)
         else:
             print(detailform.errors)
             return HttpResponse("<h1>Error</h1>")
@@ -66,10 +76,10 @@ def property_manage_details(request):
         photos = models.Image.objects.all()
         return render(request, 'dealer/property-manage.html', {'P_E': data,'photos': photos})
 
-def showdetails(request,id):
+def showdetails(request, id):
    d = models.property.objects.get(id=id)
-   i = models.Image.objects.filter(id=id)
-   return render(request, 'dealer/Show_Details.html',{'object':d})
+   photos = models.Image.objects.all()
+   return render(request, 'dealer/Show_Details.html',{'object':d,'photos': photos})
 
 def edit_property(request,id):
     a=models.property.objects.get(id=id)
@@ -77,14 +87,27 @@ def edit_property(request,id):
 
 def update_property(request,id):
     a = models.property.objects.get(id=id)
+    b=models.Image.objects.filter(proty_id=id)
     if request.method == "POST":
         updatesform = forms.updateform(request.POST, instance=a)
+        photos = request.FILES.getlist('p_image')
+        print(photos)
         if updatesform.is_valid():
-            updatesform.save()
+            obj = updatesform.save(commit=False)
+            obj.save()
+            b.delete()
+            print("helooooooooooooo")
+            for img in photos:
+                print("hhhhhhhhhhhh")
+                photo = models.Image.objects.create(p_image=img,proty=obj)
+                print("loop added")
+            print("heloiiiiiiiiiiiiiiiiiiii")
+
             print("akjndkjn",a)
             return redirect(property_manage_details)
         else:
             print(updatesform.errors)
+            print(imageform.errors)
             return HttpResponse("<h1>Error</h1>")
     else:
         return render(request, 'dealer/edit_property.html',{'object':a})
@@ -103,4 +126,16 @@ def contact(request):
     return render(request,'dealer/contact.html')
 
 def profile(request):
+    if request.method == 'POST':
+        new_username = request.POST.get('new_username')
+        new_email = request.POST.get('new_email')
+        if new_username or new_email:
+            user = request.user
+            user.username = new_username
+            user.email = new_email
+            user.save()
+            return redirect('profile')  # Redirect to the profile page after updating the username
+        else:
+            # Handle the case where the form is not valid or the username is empty
+            return render(request, 'dealer/users-profile.html', {'error': 'Invalid form or empty Username or Email'})
     return render(request,'dealer/users-profile.html')

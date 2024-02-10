@@ -1,6 +1,12 @@
 {% extends 'dealer/master.html' %}
 {% load static %}
 {% block content %}
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
   <main id="main" class="main">
     <div class="pagetitle">
       <h1>Data Tables</h1>
@@ -41,30 +47,43 @@
                    <td>{{d.p_area}}</td>
                    <td>{{d.p_rentprize}}</td>
                    <td>{{d.a_name}}</td>
-                     <td>
-                        <div class="carousel-inner">
-                          {% for image in photos.all %}
-                          <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
-                            <img src="{{ image.p_images }}" height= "250px" width="200px" class="d-block w-100" alt="">
+                   <td>
+                     <div id="carouselExampleIndicators{{ d.id }}" class="carousel slide" data-bs-ride="carousel">
+                          <div class="carousel-inner">
+                              {% for image in photos %}
+                                  <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                                      <img src="{{ image.p_image.url }}" class="d-block w-100" alt="Image {{ forloop.counter }}">
+                                      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators{{ d.id }}" data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Previous</span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators{{ d.id }}" data-bs-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Next</span>
+                                        </button>
+                                  </div>
+                              {% endfor %}
                           </div>
-                        {% endfor %}
+                     </div>
+
                    </td>
-                      </div>
-              <td>
-                    <a href="{% url 'edit_property' d.id %}"><i class="bi bi-pencil-square"></i></a>
-                  <a href="{% url 'delete_property' d.pk %}"><i class="bi bi-trash3"></i></a>
-                  <a href="{% url 'showdetails' d.id %}"><i class="bi bi-list"></i>Show More Details</a>
-              </td>
-            </tr>
+                    <td>
+                        <a href="{% url 'edit_property' d.id %}"><i class="bi bi-pencil-square"></i></a>
+                        <a href="{% url 'delete_property' d.pk %}"><i class="bi bi-trash3"></i></a>
+                        <a href="{% url 'showdetails' d.id %}"><i class="bi bi-list"></i>Show More Details</a>
+                    </td>
+                 </tr>
                   {% endfor %}
                 </tbody>
               </table>
               <!-- End Table with stripped rows -->
+                <a href="{% url 'add_details' %}"><input style="margin-left:40%" type="button" value="Add Property" class="btn btn-primary"/></a>
             </div>
           </div>
         </div>
       </div>
     </section>
+
   </main><!-- End #main -->
 {% endblock %}
   </main><!-- End #main -->

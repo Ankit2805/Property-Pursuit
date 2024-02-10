@@ -1,0 +1,123 @@
+{% extends 'adminapp/master.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+  <main id="main" class="main">
+    <div class="pagetitle">
+      <h1 style="color: white;">Manage Properties</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'dashboard' %}" style="color: white;">Home</a></li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Properties</h5>
+              <!-- Table with stripped rows -->
+              <table class="table datatable">
+                  <tr>
+                    <thead>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Area</th>
+                    <th scope="col">Rent Price</th>
+                    <th scope="col">Amenities</th>
+                    <th scope="col">Images</th>
+                    <th scope="col">Manage</th>
+                  </tr>
+                    </thead>
+                <tbody>
+                 {% for d in P_E %}
+                 <tr>
+                   <td>{{d.id}}</td>
+                   <td>{{d.p_name}}</td>
+                   <td>{{d.p_address}}</td>
+                   <td>{{d.p_area}}</td>
+                   <td>{{d.p_rentprize}}</td>
+                   <td>{{d.a_name}}</td>
+                   <td>
+                    <div id="demo" class="carousel slide" data-bs-ride="carousel">
+                    {% for image in photos %}
+                      <!-- Indicators/dots -->
+                      <div class="carousel-indicators">
+<!--                        <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>-->
+<!--                          <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>-->
+<!--                          <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>-->
+<!--                          <button type="button" data-bs-target="#demo" data-bs-slide-to="3"></button>-->
+<!--                          <button type="button" data-bs-target="#demo" data-bs-slide-to="4"></button>-->
+<!--                          <button type="button" data-bs-target="#demo" data-bs-slide-to="5"></button>-->
+<!--                          <button type="button" data-bs-target="#demo" data-bs-slide-to="6"></button>-->
+<!--                          <button type="button" data-bs-target="#demo" data-bs-slide-to="7"></button>-->
+<!--                          <button type="button" data-bs-target="#demo" data-bs-slide-to="8"></button>-->
+                      </div>
+
+                      <!-- The slideshow/carousel -->
+                      <div class="carousel-inner">
+                        <div class="carousel-item active">
+                          <img src="{{image.p_image.url}}" alt="Los Angeles" class="d-block" style="width:100%">
+                        </div>
+<!--                          <div class="carousel-item">-->
+<!--                            <img src="{{image.p_image.url}}" alt="Chicago" class="d-block" style="width:100%">-->
+<!--                          </div>-->
+<!--                          <div class="carousel-item">-->
+<!--                            <img src="{{image.p_image.url}}" alt="New York" class="d-block" style="width:100%">-->
+<!--                          </div>-->
+<!--                            <div class="carousel-item">-->
+<!--                            <img src="{{image.p_image.url}}" alt="New York" class="d-block" style="width:100%">-->
+<!--                          </div>-->
+<!--                            <div class="carousel-item">-->
+<!--                            <img src="{{image.p_image.url}}" alt="New York" class="d-block" style="width:100%">-->
+<!--                          </div>-->
+<!--                            <div class="carousel-item">-->
+<!--                            <img src="{{image.p_image.url}}" alt="New York" class="d-block" style="width:100%">-->
+<!--                          </div>-->
+<!--                            <div class="carousel-item">-->
+<!--                            <img src="{{image.p_image.url}}" alt="New York" class="d-block" style="width:100%">-->
+<!--                          </div>-->
+<!--                            <div class="carousel-item">-->
+<!--                            <img src="{{image.p_image.url}}" alt="New York" class="d-block" style="width:100%">-->
+<!--                          </div>-->
+<!--                            <div class="carousel-item">-->
+<!--                            <img src="{{image.p_image.url}}" alt="New York" class="d-block" style="width:100%">-->
+<!--                          </div>-->
+                         <!-- Left and right controls/icons -->
+                      <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                      </button>
+                      <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                      </button>
+                      </div>
+
+
+                    </div>
+                    {% endfor %}
+
+                  </td>
+                    <td>
+                        <a href="{% url 'edit-details' d.id %}"><i class="bi bi-pencil-square"></i></a>
+                        <a href="{% url 'delete-property' d.pk %}"><i class="bi bi-trash3"></i></a>
+                        <a href="{% url 'show-details' d.id %}"><i class="bi bi-list"></i>Show More Details</a>
+                    </td>
+            </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+              <!-- End Table with stripped rows -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+{% endblock %}
+  </main><!-- End #main -->

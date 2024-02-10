@@ -46,6 +46,28 @@
 <div class="card">
 <div class="card-body">
 
+    <div class="info-block">
+         <div class="carousel-inner">
+             <div>Property Images:</div>
+                     <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                              <div class="carousel-inner">
+                                {% for image in photos %}
+                                <div class="carousel-item {% if forloop.counter %} active {% endif %}">
+                                  <img src="{{ image.p_image.url }}" alt="photo" height="30%" width="" class="d-block w-50">
+                                </div>
+                                {% endfor %}
+                              </div>
+                              <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                                <span  aria-hidden="true"></span>
+                                <span class="sr-only"><i class="bi bi-arrow-left-circle"></i></span>
+                              </a>
+                              <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                                <span aria-hidden="true"></span>
+                                <span class="sr-only"><i class="bi bi-arrow-right-circle"></i></span>
+                              </a>
+                            </div>
+                   </div>
+    </div>
   <div class="info-block">
     <div>Property ID: {{object.id}}</div>
     <div>Property Name: {{object.p_name}}</div>
@@ -64,10 +86,11 @@
     <div>Rent: {{object.p_rentprize}}</div>
 <!--    <div>Details: 3 bedrooms, 2 baths, 1500 sqft</div>-->
     <div>Amenities: {{object.a_name}}</div>
-    <div>Property Images:</div>
   </div>
-    <a style="margin-left: 450px;" href="{% url 'manage_details' %}"><input type="button" value="Go Back" class="btn btn-primary"/></a>
+    <a style="margin-left: 350px;" href="{% url 'manage_details' %}"><input type="button" value="Go Back" class="btn btn-primary"/></a>
     <a href="{% url 'edit_property' object.id %}"><input type="button" value="Edit Details" class="btn btn-primary"/></a>
+    <a href="{% url 'add_details' %}"><input type="button" value="Add Property" class="btn btn-primary"/></a>
+
 </div>
 </div>
 {% endblock %}

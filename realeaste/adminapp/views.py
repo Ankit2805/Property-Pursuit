@@ -1,12 +1,32 @@
+from django.db.models import Count
 from django.shortcuts import render, HttpResponse
 from django.contrib import auth
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from dealerapp import models
+from dealerapp.models import property
+from . import forms
 
 
 def dashboard(request):
-    return render(request,'adminapp/index.html')
+    total_properties = (
+        property.objects.annotate(count=Count('id')).count()
+    )
+    total_dealers = (
+        User.objects.filter(is_staff=True).filter(is_superuser=False).annotate(count=Count('id')).count()
+    )
+    total_buyers = (
+        User.objects.filter(is_staff=False).annotate(count=Count('id')).count()
+    )
+    total_users = (
+        User.objects.annotate(count=Count('id')).count()
+    )
+    print("userssssssssss",total_dealers)
+    return render(request,'adminapp/index.html',{'total_properties':total_properties,
+                                                 'total_dealers':total_dealers,
+                                                 'total_buyers':total_buyers,
+                                                 'total_users':total_users})
 
 def login(request):
     if request.method == 'POST':
@@ -41,3 +61,42 @@ def register(request):
 
     else:
         return render(request,'adminapp/register.html')
+
+def property_manage_details_2(request):
+    data = models.property.objects.all()
+    photos = models.Image.objects.all()
+    return render(request, 'adminapp/property-manage.html', {'P_E': data, 'photos': photos})
+
+
+def showdetails_2(request, id):
+    d = models.property.objects.get(id=id)
+    photos = models.Image.objects.all()
+    return render(request, 'adminapp/Show_Details.html', {'object': d, 'photos': photos})
+
+
+def edit_property_2(request, id):
+    a = models.property.objects.get(id=id)
+    return render(request, 'adminapp/edit_property.html', {'object': a})
+
+
+def update_property_2(request, id):
+    a = models.property.objects.get(id=id)
+    if request.method == "POST":
+        updatesform = forms.updateform(request.POST, instance=a)
+        if updatesform.is_valid():
+            updatesform.save()
+            print("akjndkjn", a)
+            return redirect(property_manage_details_2)
+        else:
+            print(updatesform.errors)
+            return HttpResponse("<h1>Error</h1>")
+    else:
+        return render(request, 'adminapp/edit_property.html', {'object': a})
+
+
+def delete_property_2(request, id):
+    models.property.objects.filter(id=id).delete()
+    return redirect(property_manage_details_2)
+
+def profile(request):
+    return render(request, 'adminapp/users-profile.html')

@@ -1,6 +1,8 @@
 from django.urls import path
 from . import views
+from django.conf import settings
 
+from django.conf.urls.static import static
 urlpatterns = [
     path('dashboard/',views.dashboard_1,name='dashboard_1'),
     path('add/',views.property_add_details,name='add_details'),
@@ -15,4 +17,6 @@ urlpatterns = [
     path('contact/',views.contact,name='contact'),
     path('profile/',views.profile,name='profile'),
     path('logout/',views.logout,name='logout'),
-]
+    path('image/',views.upload_image),
+
+] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

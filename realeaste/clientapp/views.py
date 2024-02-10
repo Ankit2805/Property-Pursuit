@@ -15,6 +15,9 @@ def login_0(request):
         if user is not None and  not user.is_staff and not user.is_superuser:
             auth.login(request,user)
             return redirect(dashboard_0)
+        # elif user is not None and not user.is_superuser:
+        # auth.login(request, user)
+        #     return redirect(dashboard_0)
         else:
             return render(request, 'client/login.html', {'error': 'Invalid Username Or Password pls try again or complete the Registration'})
     else:

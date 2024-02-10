@@ -23,7 +23,7 @@ class Migration(migrations.Migration):
                 ('p_age', models.PositiveIntegerField()),
                 ('p_direction', models.CharField(choices=[('north', 'north'), ('south', 'south'), ('east', 'east'), ('west', 'west')], max_length=20)),
                 ('p_rentprize', models.PositiveIntegerField()),
-                ('p_image', models.ImageField(upload_to='p_images')),
+                ('media', models.ImageField(upload_to='p_images')),
                 ('a_name', models.CharField(max_length=200)),
             ],
         ),
