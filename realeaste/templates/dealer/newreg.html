@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static %}
+  <html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Property Pursuit</title>
+        <link rel="stylesheet" href="{% static 'dealer/css/styleweb.css' %}">
+        <link rel="stylesheet" href="cl-icon/css/all.min.css">
+    </head>
+    <body>
+    <h1>{{ error }}</h1>
+        <div class="wrapper">
+            <form method="POST" class="form">
+                {% csrf_token %}
+                <h1 class="title">Sign-Up</h1>
+                <div class="inp">
+                    <input type="text" name="username" id="" class="input" placeholder="Enter Your Name">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <div class="inp">
+                    <input type="email" name="email" id="" class="input" placeholder="Enter Your E-Mail">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                
+                <div class="inp">
+                    <input type="password" name="password1" id="password" class="input" placeholder="Enter Your Password">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+
+                <div class="inp">
+                    <input type="password" name="password2" id="password" class="input" placeholder="Confirm Your Password">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+
+                
+                <button class="submit">Sign-Up</button>
+                <p class="footer"><a href="{% url 'login_1' %}" class="link">Already Have an Account?</a></p>
+            </form>
+            <div></div>
+            <div class="banner">
+                <h1 class="wel_text">Property Pursuit</h1><br>
+                <p class="para"></p>
+            </div>
+        </div>
+    </body>
+    </html>

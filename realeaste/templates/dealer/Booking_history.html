@@ -1,85 +1,56 @@
 {% extends 'dealer/master.html' %}
 {% load static %}
-
+<!DOCTYPE html>
+<html>
 {% block content %}
-
-  <main id="main" class="main">
-
+<head>
+<title></title>
+<style>
+  /* General styling for the page */
+  body {
+    font-family: sans-serif; /* Use a sans-serif font for a clean look */
+    margin: 40px; /* Add some space around the edges */
+  }
+  /* Styling for the property information blocks */
+  .info-block {
+    display: flex; /* Arrange items in a row */
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    margin: 10px 0; /* Add space between blocks */
+  }
+  .info-block > div {
+    flex: 1; /* Make each item take up equal space */
+    padding: 10px; /* Add padding around the content */
+    border: 1px solid #ccc; /* Add a border around each item */
+    margin: 5px; /* Add space between items */
+  }
+</style>
+</head>
+<body>
+<main id="main" class="main">
     <div class="pagetitle">
-      <h1>Data Tables</h1>
+      <h1>Booking Requests</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item">Tables</li>
-          <li class="breadcrumb-item active">Data</li>
+          <li class="breadcrumb-item"><a href="{% url 'dashboard_1' %}">Home</a></li>
+          <li class="breadcrumb-item">Forms</li>
+          <li class="breadcrumb-item active">Elements</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
-
-    <section class="section">
-      <div class="row">
-        <div class="col-lg-12">
-
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Booking History</h5>
-
-              <!-- Table with stripped rows -->
-              <table class="table datatable">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Address</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Property ID</th>
-                    <th scope="col">Property Name</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Brandon Jacob</td>
-                    <td>Designer</td>
-                    <td>28</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Bridie Kessler</td>
-                    <td>Developer</td>
-                    <td>35</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Ashleigh Langosh</td>
-                    <td>Finance</td>
-                    <td>45</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">4</th>
-                    <td>Angus Grady</td>
-                    <td>HR</td>
-                    <td>34</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">5</th>
-                    <td>Raheem Lehner</td>
-                    <td>Dynamic Division Officer</td>
-                    <td>47</td>
-                  </tr>
-
-                </tbody>
-              </table>
-              <!-- End Table with stripped rows -->
-
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-  </main><!-- End #main -->
-{% endblock %}
-  </main><!-- End #main -->
-
+<div class="card">
+  {% for ab in br %}
+  <div class="card-body">
+    <div class="info-block">
+      <div>User Name: {{ab.user.username}}</div><!--buyername-->
+      <div>Property Name: {{ab.prop.p_name}}</div>
+      <!--    <div>Property Name: {{ab.prop.p_images}}</div>-->
+      <div>Property Address: {{ab.prop.p_address}}</div>
+      <div>Rent Price: {{ab.prop.p_rentprize}}/-Month</div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+  {% endblock %}
+</main>
+</body>
+</html>

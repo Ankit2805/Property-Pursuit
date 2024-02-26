@@ -1,0 +1,98 @@
+/* Replace with your CSS Code 
+  (Leave empty if not needed) */*{
+    margin: 0;
+    padding: 0;
+    font-family: arial;
+    color: #000000;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    background: #ffffff;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+::-webkit-input-placeholder{
+    color: #000000;
+}
+.wrapper{
+    position: relative;
+    width: 800px;
+    height: 75vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 3px solid #000000;
+    box-shadow: 0 0 50px 0 #000000;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.title{
+    font-size: 35px;
+}
+.inp{
+    padding-bottom: 5px;
+    border-bottom: 2px solid #000000;
+}
+.input{
+    border: none;
+    outline: none;
+    background: none;
+    width: 260px;
+    margin-top: 40px;
+    padding-right: 10px;
+    font-size: 17px;
+    color: rgb(0, 0, 0);
+
+}
+.submit{
+    border: none;
+    outline: none;
+    width: 288px;
+    margin-top: 25px;
+    padding: 10px 0;
+    font-size: 20px;
+    border-radius: 40px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    background: linear-gradient(45deg,#0d6efd, #35a3f7);
+}
+.footer{
+    margin-top: 30px;
+    letter-spacing: 0.5px;
+    font-size: 14px;
+}
+.link{
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+.banner{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 450px;
+    height: 390px;
+    background: linear-gradient(to right,#0ef,#0d6efd );
+    clip-path: polygon(0 0,100% 0,100% 100%, 60% 100%);
+    padding-right: 70px;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+.wel_text{
+    font-size: 40px;
+    margin-top: -50px;
+    line-height: 50px;
+}
+.para{
+    margin-top: 10px;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 1px;
+}

@@ -5,6 +5,8 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from . import models
 from . import forms
+from clientapp.models import bookingrequest
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def login_1(request):
@@ -15,16 +17,16 @@ def login_1(request):
             auth.login(request,user)
             return redirect(dashboard_1)
         else:
-            return render(request, 'dealer/login.html', {'error':'Invalid Username Or Password pls try again or complete the Registration'})
+            return render(request, 'dealer/NEWLOGIN.html', {'error':'Invalid Username Or Password pls try again or complete the Registration'})
     else:
-        return render(request,'dealer/login.html')
+        return render(request,'dealer/NEWLOGIN.html')
 
 def register_1(request):
     if request.method == "POST":
         if request.POST.get('password1') == request.POST.get('password2'):
             try:
                 User.objects.get(username=request.POST['username'])
-                return render(request,'dealer/register.html',{'error':'username is already exist'})
+                return render(request,'dealer/newreg.html',{'error':'username is already exist'})
             except User.DoesNotExist:
                 user = User.objects.create_user(username=request.POST.get('username'),
                                                 email=request.POST.get('email'),
@@ -33,26 +35,16 @@ def register_1(request):
                 auth.login(request,user)
                 return redirect(login_1)
         else:
-                return render(request,'dealer/register.html',{'error':'password does not match'})
+                return render(request,'dealer/newreg.html',{'error':'password does not match'})
 
     else:
-        return render(request,'dealer/register.html')
+        return render(request,'dealer/newreg.html')
 
-
-
+@login_required(login_url='login_1')
 def dashboard_1(request):
     return render(request,'dealer/index.html')
 
-def upload_image(request):
-    if request.method == 'POST':
-        form = forms.MyImageForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect(property_manage_details)  # Redirect to a success page
-    else:
-        form = forms.MyImageForm()
-    return render(request, 'dealer/upload_image.html', {'form': form})
-
+@login_required(login_url='login_1')
 def property_add_details(request):
     if request.method == "POST":
         detailform = forms.detailsform(request.POST,request.FILES)
@@ -71,20 +63,24 @@ def property_add_details(request):
             return HttpResponse("<h1>Error</h1>")
     return render(request, 'dealer/property-add_details.html')
 
+@login_required(login_url='login_1')
 def property_manage_details(request):
         data = models.property.objects.all()
         photos = models.Image.objects.all()
         return render(request, 'dealer/property-manage.html', {'P_E': data,'photos': photos})
 
+@login_required(login_url='login_1')
 def showdetails(request, id):
    d = models.property.objects.get(id=id)
    photos = models.Image.objects.all()
    return render(request, 'dealer/Show_Details.html',{'object':d,'photos': photos})
 
+@login_required(login_url='login_1')
 def edit_property(request,id):
     a=models.property.objects.get(id=id)
     return render(request,'dealer/edit_property.html',{'object':a})
 
+@login_required(login_url='login_1')
 def update_property(request,id):
     a = models.property.objects.get(id=id)
     b=models.Image.objects.filter(proty_id=id)
@@ -112,6 +108,7 @@ def update_property(request,id):
     else:
         return render(request, 'dealer/edit_property.html',{'object':a})
 
+@login_required(login_url='login_1')
 def delete_property(request,id):
     models.property.objects.filter(id=id).delete()
     return redirect(property_manage_details)
@@ -119,12 +116,17 @@ def delete_property(request,id):
 def logout(request):
     auth.logout(request)
     return redirect(register_1)
-def booking_history(request):
-    return render(request,'dealer/Booking_history.html')
 
+@login_required(login_url='login_1')
+def booking_history(request):
+    br = bookingrequest.objects.all()
+    return render(request, 'dealer/Booking_history.html', {'br': br})
+
+@login_required(login_url='login_1')
 def contact(request):
     return render(request,'dealer/contact.html')
 
+@login_required(login_url='login_1')
 def profile(request):
     if request.method == 'POST':
         new_username = request.POST.get('new_username')

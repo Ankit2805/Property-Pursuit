@@ -1,437 +1,151 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  {% csrf_token %}
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <title>Property Pursuit</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
-  <!-- Favicons -->
-  <link href="{% static 'dealer/img/favicon.png' %}" rel="icon">
-  <link href="{% static 'dealer/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="{% static 'dealer/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-  <link href="{% static 'dealer/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
-  <link href="{% static 'dealer/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
-  <link href="{% static 'dealer/vendor/quill/quill.snow.css' %}" rel="stylesheet">
-  <link href="{% static 'dealer/vendor/quill/quill.bubble.css' %}" rel="stylesheet">
-  <link href="{% static 'dealer/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
-  <link href="{% static 'dealer/vendor/simple-datatables/style.css' %}" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="{% static 'dealer/css/style.css' %}" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: NiceAdmin
-  * Updated: Sep 18 2023 with Bootstrap v5.3.2
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900%7CRoboto+Mono:300,400,500">
+  <link rel="stylesheet" href="{% static 'client/fonts/icomoon/style.css' %}">
+  <link rel="stylesheet" href="{% static 'client/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'client/css/magnific-popup.css' %}">
+  <link rel="stylesheet" href="{% static 'client/css/jquery-ui.css' %}">
+  <link rel="stylesheet" href="{% static 'client/css/owl.carousel.min.css' %}">
+  <link rel="stylesheet" href="{% static 'client/css/owl.theme.default.min.css '%}">
+  <link rel="stylesheet" href="{% static 'client/css/bootstrap-datepicker.css' %}">
+  <link rel="stylesheet" href="{% static 'client/css/mediaelementplayer.css' %}">
+  <link rel="stylesheet" href="{% static 'client/css/animate.css' %}">
+  <link rel="stylesheet" href="{% static 'client/fonts/flaticon/font/flaticon.css' %}">
+  <link rel="stylesheet" href="{% static 'client/css/fl-bigmug-line.css' %}">
+  <link rel="stylesheet" href="{% static 'client/css/aos.css' %}">
+  <link rel="stylesheet" href="{% static 'client/css/style.css' %}">
 </head>
-
 <body>
-
-  <!-- ======= Header ======= -->
-  <header id="header" class="header fixed-top d-flex align-items-center">
-
-    <div class="d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
-        <img src="{% static 'dealer/img/logo.png' %}" alt="">
-        <span class="d-none d-lg-block">Buyer App</span>
-      </a>
-      <i class="bi bi-list toggle-sidebar-btn"></i>
-    </div><!-- End Logo -->
-
-    <div class="search-bar">
-      <form class="search-form d-flex align-items-center" method="POST" action="#">
-        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-      </form>
-    </div><!-- End Search Bar -->
-
-    <nav class="header-nav ms-auto">
-      <ul class="d-flex align-items-center">
-
-        <li class="nav-item d-block d-lg-none">
-          <a class="nav-link nav-icon search-bar-toggle " href="#">
-            <i class="bi bi-search"></i>
-          </a>
-        </li><!-- End Search Icon-->
-
-        <li class="nav-item dropdown">
-
-          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-            <i class="bi bi-bell"></i>
-            <span class="badge bg-primary badge-number">4</span>
-          </a><!-- End Notification Icon -->
-
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-            <li class="dropdown-header">
-              You have 4 new notifications
-              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li class="notification-item">
-              <i class="bi bi-exclamation-circle text-warning"></i>
-              <div>
-                <h4>Lorem Ipsum</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
-                <p>30 min. ago</p>
-              </div>
-            </li>
-
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li class="notification-item">
-              <i class="bi bi-x-circle text-danger"></i>
-              <div>
-                <h4>Atque rerum nesciunt</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
-                <p>1 hr. ago</p>
-              </div>
-            </li>
-
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li class="notification-item">
-              <i class="bi bi-check-circle text-success"></i>
-              <div>
-                <h4>Sit rerum fuga</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
-                <p>2 hrs. ago</p>
-              </div>
-            </li>
-
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li class="notification-item">
-              <i class="bi bi-info-circle text-primary"></i>
-              <div>
-                <h4>Dicta reprehenderit</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
-                <p>4 hrs. ago</p>
-              </div>
-            </li>
-
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li class="dropdown-footer">
-              <a href="#">Show all notifications</a>
-            </li>
-
-          </ul><!-- End Notification Dropdown Items -->
-
-        </li><!-- End Notification Nav -->
-
-        <li class="nav-item dropdown">
-
-          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-            <i class="bi bi-chat-left-text"></i>
-            <span class="badge bg-success badge-number">3</span>
-          </a><!-- End Messages Icon -->
-
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
-            <li class="dropdown-header">
-              You have 3 new messages
-              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li class="message-item">
-              <a href="#">
-                <img src="{% static 'dealer/img/messages-1.jpg' %}" alt="" class="rounded-circle">
-                <div>
-                  <h4>Maria Hudson</h4>
-                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                  <p>4 hrs. ago</p>
-                </div>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li class="message-item">
-              <a href="#">
-                <img src="{% static 'dealer/img/messages-2.jpg' %}" alt="" class="rounded-circle">
-                <div>
-                  <h4>Anna Nelson</h4>
-                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                  <p>6 hrs. ago</p>
-                </div>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li class="message-item">
-              <a href="#">
-                <img src="{% static 'dealer/img/messages-3.jpg' %}" alt="" class="rounded-circle">
-                <div>
-                  <h4>David Muldon</h4>
-                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
-                  <p>8 hrs. ago</p>
-                </div>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li class="dropdown-footer">
-              <a href="#">Show all messages</a>
-            </li>
-
-          </ul><!-- End Messages Dropdown Items -->
-
-        </li><!-- End Messages Nav -->
-
-        <li class="nav-item dropdown pe-3">
-
-          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="{% static 'dealer/img/profile-img.jpg' %}" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
-          </a><!-- End Profile Iamge Icon -->
-
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-            <li class="dropdown-header">
-              <h6>Kevin Anderson</h6>
-              <span>Web Designer</span>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-person"></i>
-                <span>My Profile</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-gear"></i>
-                <span>Account Settings</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                <i class="bi bi-question-circle"></i>
-                <span>Need Help?</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="{% url 'register_0' %}">
-                <i class="bi bi-box-arrow-right"></i>
-                <span>Sign Out</span>
-              </a>
-            </li>
-
-          </ul><!-- End Profile Dropdown Items -->
-        </li><!-- End Profile Nav -->
-
-      </ul>
-    </nav><!-- End Icons Navigation -->
-
-  </header><!-- End Header -->
-
-  <!-- ======= Sidebar ======= -->
-  <aside id="sidebar" class="sidebar">
-
-    <ul class="sidebar-nav" id="sidebar-nav">
-
-      <li class="nav-item">
-        <a class="nav-link " href="{% url 'dashboard_0' %}">
-          <i class="bi bi-grid"></i>
-          <span>Dashboard</span>
-        </a>
-      </li><!-- End Dashboard Nav -->
-
-
-        <!-- Start Property nav -->
-      </li>
-       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Property</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="{% url 'add_details' %}">
-              <i class="bi bi-circle"></i><span>Add Property Details</span>
-            </a>
-          </li>
-
-          <li>
-            <a href="{% url 'manage_details' %}">
-              <i class="bi bi-circle"></i><span>Manage Property Details</span>
-            </a>
-          </li>
-        </ul>
-          <!-- End Property nav -->
-
-      <!-- Start Booking nav -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-menu-button-wide"></i><span>Bookings</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-
-       <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="{% url 'booking_history' %}">
-              <i class="bi bi-circle"></i><span>Booking History</span>
-            </a>
-          </li>
-        </ul>
-
-
-
-      </li>
-      <!-- End Booking nav -->
-
-      <li class="nav-heading">Pages</li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-contact.html">
-          <i class="bi bi-chat"></i>
-          <span>Chats</span>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-contact.html">
-          <i class="bi bi-file-earmark"></i>
-          <span>Rent agreement</span>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'profile' %}">
-          <i class="bi bi-person"></i>
-          <span>Profile</span>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'contact' %}">
-          <i class="bi bi-envelope"></i>
-          <span>Contact</span>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-contact.html">
-          <i class="bi bi-chat-square-text"></i>
-          <span>Feedback</span>
-        </a>
-      </li>
-
-      <!-- End Contact Page Nav -->
-
-<!--      <li class="nav-item">-->
-<!--        <a class="nav-link collapsed" href="pages-register.html">-->
-<!--          <i class="bi bi-card-list"></i>-->
-<!--          <span>Register</span>-->
-<!--        </a>-->
-<!--      </li>&lt;!&ndash; End Register Page Nav &ndash;&gt;-->
-
-<!--      <li class="nav-item">-->
-<!--        <a class="nav-link collapsed" href="pages-login.html">-->
-<!--          <i class="bi bi-box-arrow-in-right"></i>-->
-<!--          <span>Login</span>-->
-<!--        </a>-->
-<!--      </li>&lt;!&ndash; End Login Page Nav &ndash;&gt;-->
-
-<!--      <li class="nav-item">-->
-<!--        <a class="nav-link collapsed" href="pages-error-404.html">-->
-<!--          <i class="bi bi-dash-circle"></i>-->
-<!--          <span>Error 404</span>-->
-<!--        </a>-->
-<!--      </li>&lt;!&ndash; End Error 404 Page Nav &ndash;&gt;-->
-
-<!--      <li class="nav-item">-->
-<!--        <a class="nav-link collapsed" href="pages-blank.html">-->
-<!--          <i class="bi bi-file-earmark"></i>-->
-<!--          <span>Blank</span>-->
-<!--        </a>-->
-<!--      </li>&lt;!&ndash; End Blank Page Nav &ndash;&gt;-->
-
-    </ul>
-
-  </aside>
-
-
-{% block content %}
-
-
-{% endblock %}
-
-
-
-<!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
-    <div class="copyright">
-      &copy; Copyright <strong><span>Property Pursuit</span></strong>. All Rights Reserved
+  {% csrf_token %}
+  <div class="site-loader"></div>
+  <div class="site-wrap">
+    <div class="site-mobile-menu">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div> <!-- .site-mobile-menu -->
+    <div class="site-navbar mt-4">
+      <div class="container py-1">
+        <div class="row align-items-center">
+          <div class="col-8 col-md-8 col-lg-4">
+            <h1 class="mb-0"><a href="index.html" class="text-white h2 mb-0"><strong>Property Pursuit<span
+                    class="text-danger">.</span></strong></a></h1>
+          </div>
+          <div class="col-4 col-md-4 col-lg-8">
+            <nav class="site-navigation text-right text-md-right" role="navigation">
+              <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#"
+                  class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
+              <ul class="site-menu js-clone-nav d-none d-lg-block">
+                <li class="active">
+                  <a href="{% url 'index' %}">Home</a>
+                </li>
+                <li><a href="{% url 'about' %}">About</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
+                <!--                <li><a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"-->
+                <!--                      class="bi bi-person-circle" viewBox="0 0 16 16">-->
+                <!--                      <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />-->
+                <!--                      <path fill-rule="evenodd"-->
+                <!--                        d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />-->
+                <!--                    </svg>{{user.username}}</a>-->
+                <!--                </li>-->
+                <li class="has-children">
+                  <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                      class="bi bi-person-circle" viewBox="0 0 16 16" >
+                      <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                      <path fill-rule="evenodd"
+                        d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                    </svg>{{user.username}}</a>
+                  <ul class="dropdown arrow-top">
+                    <li><a href="{% url 'profile' %}">My Profile</a></li>
+                    <li><a href="{% url 'logout_0' %}">Sign Out</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="credits">
-      <!-- All the links in the footer should remain intact. -->
-      <!-- You can delete the links only if you purchased the pro version. -->
-      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-<!--      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>-->
+  </div>
+  <div class="slide-one-item home-slider owl-carousel">
+    <div class="site-blocks-cover overlay" style="background-image: url({% static 'client/images/p-1.jpg' %});"
+      data-aos="fade" data-stellar-background-ratio="0.5">
+      <div class="container">
+        <div class="row align-items-center justify-content-center text-center">
+          <div class="col-md-10">
+            <!--            <span class="d-inline-block bg-success text-white px-3 mb-3 property-offer-type rounded">For Rent</span>-->
+            <h1 class="mb-2">Ratna Paradise</h1>
+            <!--            <p class="mb-5"><strong class="h2 text-success font-weight-bold">Rs.30,000/month</strong></p>-->
+            <!--            <p><a href="#" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">See Details</a></p>-->
+          </div>
+        </div>
+      </div>
     </div>
-  </footer><!-- End Footer -->
-
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Vendor JS Files -->
-  <script src="{% static 'dealer/vendor/apexcharts/apexcharts.min.js' %}"></script>
-  <script src="{% static 'dealer/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-  <script src="{% static 'dealer/vendor/chart.js/chart.umd.js' %}"></script>
-  <script src="{% static 'dealer/vendor/echarts/echarts.min.js' %}"></script>
-  <script src="{% static 'dealer/vendor/quill/quill.min.js' %}"></script>
-  <script src="{% static 'dealer/vendor/simple-datatables/simple-datatables.js' %}"></script>
-  <script src="{% static 'dealer/vendor/tinymce/tinymce.min.js' %}"></script>
-  <script src="{% static 'dealer/vendor/php-email-form/validate.js' %}"></script>
-
-  <!-- Template Main JS File -->
-  <script src="{% static 'dealer/js/main.js' %}"></script>
-
+    <div class="site-blocks-cover overlay" style="background-image: url({% static 'client/images/p-2.jpg' %});"
+      data-aos="fade" data-stellar-background-ratio="0.5">
+      <div class="container">
+        <div class="row align-items-center justify-content-center text-center">
+          <div class="col-md-10">
+            <!--            <span class="d-inline-block bg-danger text-white px-3 mb-3 property-offer-type rounded">For Rent</span>-->
+            <h1 class="mb-2">Mapple Tree Garden</h1>
+            <!--            <p class="mb-5"><strong class="h2 text-success font-weight-bold">Rs.25,000/month</strong></p>-->
+            <!--            <p><a href="#" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">See Details</a></p>-->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="site-blocks-cover overlay" style="background-image: url({% static 'client/images/p-3.jpg' %});"
+      data-aos="fade" data-stellar-background-ratio="0.5">
+      <div class="container">
+        <div class="row align-items-center justify-content-center text-center">
+          <div class="col-md-10">
+            <!--            <span class="d-inline-block bg-danger text-white px-3 mb-3 property-offer-type rounded">For Rent</span>-->
+            <h1 class="mb-2">Rajyash Reeva</h1>
+            <!--            <p class="mb-5"><strong class="h2 text-success font-weight-bold">Rs.25,000/month</strong></p>-->
+            <!--            <p><a href="#" class="btn btn-white btn-outline-white py-3 px-5 rounded-0 btn-2">See Details</a></p>-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% block content %}
+  {% endblock %}
+  <div class="row pt-5 mt-5 text-center">
+    <div class="col-md-12">
+      <p>
+        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+        Copyright &copy;
+        <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+        <script>document.write(new Date().getFullYear());</script> All rights reserved | To Developer <i
+          class="icon-heart text-danger" aria-hidden="true"></i><a href="https://colorlib.com" target="_blank"></a>
+        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+      </p>
+    </div>
+  </div>
+  <script src="{% static 'client/js/jquery-3.3.1.min.js' %}"></script>
+  <script src="{% static 'client/js/jquery-migrate-3.0.1.min.js' %}"></script>
+  <script src="{% static 'client/js/jquery-ui.js' %}"></script>
+  <script src="{% static 'client/js/popper.min.js' %}"></script>
+  <script src="{% static 'client/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'client/js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'client/js/mediaelement-and-player.min.js' %}"></script>
+  <script src="{% static 'client/js/jquery.stellar.min.js' %}"></script>
+  <script src="{% static 'client/js/jquery.countdown.min.js' %}"></script>
+  <script src="{% static 'client/js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'client/js/bootstrap-datepicker.min.js' %}"></script>
+  <script src="{% static 'client/js/aos.js' %}"></script>
+  <script src="{% static 'client/js/main.js' %}"></script>
 </body>
-
 </html>

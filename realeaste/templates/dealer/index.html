@@ -8,127 +8,145 @@
 
     <div class="pagetitle">
       <h1>Dashboard</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="{% url 'dashboard_1' %}">Home</a></li>
-          <li class="breadcrumb-item active">Dashboard</li>
-        </ol>
-      </nav>
     </div><!-- End Page Title -->
 
     <section class="section dashboard">
       <div class="row">
 
         <!-- Left side columns -->
-        <div class="col-lg-8">
+        <div class="col-lg-8" style="width: 100%;">
           <div class="row">
-
-            <!-- Sales Card -->
-            <div class="col-xxl-4 col-md-6">
-              <div class="card info-card sales-card">
-
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">Sales <span>| Today</span></h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-cart"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>145</h6>
-                      <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>
-
-                    </div>
+              <section class="section dashboard">
+                <div id="imageSlider" class="carousel slide" data-bs-ride="carousel">
+                 <div class="carousel-inner">
+                  <div class="carousel-item active">
+                     <img src="{% static 'dealer/img/slide1.jpg' %}" style="height: 450px;" class="d-block w-100" alt="Slide 1">
                   </div>
-                </div>
-
-              </div>
-            </div><!-- End Sales Card -->
-
-            <!-- Revenue Card -->
-            <div class="col-xxl-4 col-md-6">
-              <div class="card info-card revenue-card">
-
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">Revenue <span>| This Month</span></h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-currency-rupee"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>₹3,264</h6>
-                      <span class="text-success small pt-1 fw-bold">18%</span> <span class="text-muted small pt-2 ps-1">increase</span>
-
-                    </div>
+                  <div class="carousel-item">
+                    <img src="{% static 'dealer/img/slide2.jpg' %}" style="height: 450px;" class="d-block w-100" alt="Slide 2">
                   </div>
-                </div>
-
-              </div>
-            </div><!-- End Revenue Card -->
-
-            <!-- Customers Card -->
-            <div class="col-xxl-4 col-xl-12">
-
-              <div class="card info-card customers-card">
-
-                <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-                </div>
-
-                <div class="card-body">
-                  <h5 class="card-title">Customers <span>| This Year</span></h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-people"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>124</h6>
-                      <span class="text-danger small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">decrease</span>
-
-                    </div>
+                <div class="carousel-item">
+                    <img src="{% static 'dealer/img/slide3.jpg' %}" style="height: 450px;" class="d-block w-100" alt="Slide 3">
+                 </div>
+                    <!-- Add more carousel items as needed -->
                   </div>
-
+                  <button class="carousel-control-prev" type="button" data-bs-target="#imageSlider" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#imageSlider" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
                 </div>
-              </div>
+              </section>
 
-            </div><!-- End Customers Card -->
+<!--            &lt;!&ndash; Sales Card &ndash;&gt;-->
+<!--            <div class="col-xxl-4 col-md-6">-->
+<!--              <div class="card info-card sales-card">-->
+
+<!--                <div class="filter">-->
+<!--                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>-->
+<!--                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">-->
+<!--                    <li class="dropdown-header text-start">-->
+<!--                      <h6>Filter</h6>-->
+<!--                    </li>-->
+
+<!--                    <li><a class="dropdown-item" href="#">Today</a></li>-->
+<!--                    <li><a class="dropdown-item" href="#">This Month</a></li>-->
+<!--                    <li><a class="dropdown-item" href="#">This Year</a></li>-->
+<!--                  </ul>-->
+<!--                </div>-->
+
+<!--                <div class="card-body">-->
+<!--                  <h5 class="card-title">Sales <span>| Today</span></h5>-->
+
+<!--                  <div class="d-flex align-items-center">-->
+<!--                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">-->
+<!--                      <i class="bi bi-cart"></i>-->
+<!--                    </div>-->
+<!--                    <div class="ps-3">-->
+<!--                      <h6>145</h6>-->
+<!--                      <span class="text-success small pt-1 fw-bold">12%</span> <span class="text-muted small pt-2 ps-1">increase</span>-->
+
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+
+<!--              </div>-->
+<!--            </div>&lt;!&ndash; End Sales Card &ndash;&gt;-->
+
+<!--            &lt;!&ndash; Revenue Card &ndash;&gt;-->
+<!--            <div class="col-xxl-4 col-md-6">-->
+<!--              <div class="card info-card revenue-card">-->
+
+<!--                <div class="filter">-->
+<!--                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>-->
+<!--                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">-->
+<!--                    <li class="dropdown-header text-start">-->
+<!--                      <h6>Filter</h6>-->
+<!--                    </li>-->
+
+<!--                    <li><a class="dropdown-item" href="#">Today</a></li>-->
+<!--                    <li><a class="dropdown-item" href="#">This Month</a></li>-->
+<!--                    <li><a class="dropdown-item" href="#">This Year</a></li>-->
+<!--                  </ul>-->
+<!--                </div>-->
+
+<!--                <div class="card-body">-->
+<!--                  <h5 class="card-title">Revenue <span>| This Month</span></h5>-->
+
+<!--                  <div class="d-flex align-items-center">-->
+<!--                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">-->
+<!--                      <i class="bi bi-currency-rupee"></i>-->
+<!--                    </div>-->
+<!--                    <div class="ps-3">-->
+<!--                      <h6>₹3,264</h6>-->
+<!--                      <span class="text-success small pt-1 fw-bold">18%</span> <span class="text-muted small pt-2 ps-1">increase</span>-->
+
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+
+<!--              </div>-->
+<!--            </div>&lt;!&ndash; End Revenue Card &ndash;&gt;-->
+
+<!--            &lt;!&ndash; Customers Card &ndash;&gt;-->
+<!--            <div class="col-xxl-4 col-xl-12">-->
+
+<!--              <div class="card info-card customers-card">-->
+
+<!--                <div class="filter">-->
+<!--                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>-->
+<!--                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">-->
+<!--                    <li class="dropdown-header text-start">-->
+<!--                      <h6>Filter</h6>-->
+<!--                    </li>-->
+
+<!--                    <li><a class="dropdown-item" href="#">Today</a></li>-->
+<!--                    <li><a class="dropdown-item" href="#">This Month</a></li>-->
+<!--                    <li><a class="dropdown-item" href="#">This Year</a></li>-->
+<!--                  </ul>-->
+<!--                </div>-->
+
+<!--                <div class="card-body">-->
+<!--                  <h5 class="card-title">Customers <span>| This Year</span></h5>-->
+
+<!--                  <div class="d-flex align-items-center">-->
+<!--                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">-->
+<!--                      <i class="bi bi-people"></i>-->
+<!--                    </div>-->
+<!--                    <div class="ps-3">-->
+<!--                      <h6>124</h6>-->
+<!--                      <span class="text-danger small pt-1 fw-bold">8%</span> <span class="text-muted small pt-2 ps-1">decrease</span>-->
+
+<!--                    </div>-->
+<!--                  </div>-->
+
+<!--                </div>-->
+<!--              </div>-->
+
+<!--            </div>&lt;!&ndash; End Customers Card &ndash;&gt;-->
 
 
 

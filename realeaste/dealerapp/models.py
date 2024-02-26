@@ -42,9 +42,6 @@ class Image(models.Model):
 class registration(models.Model):
     username = models.CharField(max_length=20)
     email = models.CharField(max_length=10)
-    about = models.CharField(max_length=20)
-    address = models.CharField(max_length=20)
-    phone = models.PositiveIntegerField()
     password1 = models.CharField(max_length=15)
     password2 = models.CharField(max_length=15)
 

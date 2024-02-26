@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load static %}
+  <html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Property Pursuit</title>
+        <link rel="stylesheet" href="{% static 'dealer/css/styleweb.css' %}">
+        <link rel="stylesheet" href="cl-icon/css/all.min.css">
+    </head>
+    <h1>{{error}}</h1>
+    <body>
+    <div class="wrapper">
+            <form method="POST" class="form">
+                <h1 class="title">Login</h1>
+                {% csrf_token %}
+                <div class="inp">
+                    <input type="text" name="username" id="username" class="input" placeholder="Username">
+                </div>
+
+                <div class="inp">
+                    <input type="password" name="password" id="password" class="input" placeholder="Password">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <button class="submit">Submit</button>
+                <p class="footer"><a href="{% url 'register_1' %}" class="link">Don't Have an Account?</a></p>
+            </form>
+            <div></div>
+            <div class="banner">
+                <h1 class="wel_text">Property Pursuit</h1><br>
+                <p class="para"></p>
+            </div>
+        </div>
+    </body>
+    </html>

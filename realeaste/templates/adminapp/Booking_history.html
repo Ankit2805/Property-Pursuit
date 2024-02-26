@@ -1,0 +1,49 @@
+{% extends 'adminapp/master.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+{% block content %}
+<head>
+<title></title>
+<style>
+  /* General styling for the page */
+  body {
+    font-family: sans-serif; /* Use a sans-serif font for a clean look */
+    margin: 40px; /* Add some space around the edges */
+  }
+  /* Styling for the property information blocks */
+  .info-block {
+    display: flex; /* Arrange items in a row */
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    margin: 10px 0; /* Add space between blocks */
+  }
+  .info-block > div {
+    flex: 1; /* Make each item take up equal space */
+    padding: 10px; /* Add padding around the content */
+    border: 1px solid #ccc; /* Add a border around each item */
+    margin: 5px; /* Add space between items */
+  }
+</style>
+</head>
+<body>
+<main id="main" class="main">
+    <div class="pagetitle">
+      <h1 style="color: white;">Booking Requests</h1>
+    </div><!-- End Page Title -->
+<div class="card">
+  {% for ab in br %}
+  <div class="card-body">
+    <div class="info-block">
+      <div>User Name: {{ab.user.username}}</div><!--buyername-->
+      <div>Property Name: {{ab.prop.p_name}}</div>
+      <!--    <div>Property Name: {{ab.prop.p_images}}</div>-->
+      <div>Property Address: {{ab.prop.p_address}}</div>
+      <div>Rent Price: {{ab.prop.p_rentprize}}/-Month</div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+  {% endblock %}
+</main>
+</body>
+</html>

@@ -45,26 +45,23 @@
 <div class="card-body">
 
     <div class="info-block">
-         <div class="carousel-inner">
-             <div>Property Images:</div>
-                     <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                              <div class="carousel-inner">
-                                {% for image in photos %}
-                                <div class="carousel-item {% if forloop.counter %} active {% endif %}">
-                                  <img src="{{ image.p_image.url }}" alt="photo" height="30%" width="" class="d-block w-50">
-                                </div>
-                                {% endfor %}
-                              </div>
-                              <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-                                <span  aria-hidden="true"></span>
-                                <span class="sr-only"><i class="bi bi-arrow-left-circle"></i></span>
-                              </a>
-                              <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-                                <span aria-hidden="true"></span>
-                                <span class="sr-only"><i class="bi bi-arrow-right-circle"></i></span>
-                              </a>
-                            </div>
-                   </div>
+         <div id="carouselExampleIndicators{{ d.id }}" class="carousel slide" style="width: 50%;" data-bs-ride="carousel">
+          <div class="carousel-inner">
+              {% for image in photos %}
+              <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                  <img src="{{ image.p_image.url }}" class="d-block" style="width:500px; height:300px;" alt="Image {{ forloop.counter }}">
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators{{ d.id }}" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators{{ d.id }}" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                  </button>
+              </div>
+              {% endfor %}
+          </div>
+      </div>
     </div>
   <div class="info-block">
     <div>Property ID: {{object.id}}</div>
@@ -85,8 +82,7 @@
 <!--    <div>Details: 3 bedrooms, 2 baths, 1500 sqft</div>-->
     <div>Amenities: {{object.a_name}}</div>
   </div>
-    <a style="margin-left: 430px;" href="{% url 'manage_details' %}"><input type="button" value="Go Back" class="btn btn-primary"/></a>
-    <a href="{% url 'edit-details' object.id %}"><input type="button" value="Edit Details" class="btn btn-primary"/></a>
+    <a style="margin-left: 500px;" href="{% url 'manage_details' %}"><input type="button" value="Go Back" class="btn btn-primary"/></a>
 </div>
 </div>
 </main>

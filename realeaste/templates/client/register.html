@@ -1,177 +1,47 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>property pursuit</title>
-  
+{% load static %}
+  <html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Property Pursuit</title>
+        <link rel="stylesheet" href="{% static 'dealer/css/styleweb.css' %}">
+        <link rel="stylesheet" href="cl-icon/css/all.min.css">
+    </head>
+    <body>
+    <h1>{{ error }}</h1>
+        <div class="wrapper">
+            <form method="POST" class="form">
+                {% csrf_token %}
+                <h1 class="title">Sign-Up</h1>
+                <div class="inp">
+                    <input type="text" name="username" id="" class="input" placeholder="Enter Your Name">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <div class="inp">
+                    <input type="email" name="email" id="" class="input" placeholder="Enter Your E-Mail">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
 
-</head>
-<body>
-<!-- partial:index.partial.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <!-- Design by foolishdeveloper.com -->
-    <title>Glassmorphism login Form Tutorial in html css</title>
- 
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
-    <!--Stylesheet-->
-    <style media="screen">
-      *,
-*:before,
-*:after{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-body{
-    background-color: #ffffff;
-}
-.background{
-    width: 430px;
-    height: 520px;
-    position: absolute;
-    transform: translate(-50%,-50%);
-    left: 50%;
-    top: 50%;
-}
-.background .shape{
-    height: 200px;
-    width: 200px;
-    position: absolute;
-    border-radius: 50%;
-}
-.shape:first-child{
-    background-color: #0d6efd;
-    left: -100px;
-    top: -100px;
-}
-.shape:last-child{
-    background: linear-gradient(
-        to right,
-        #131313,
-        #292828
-    );
-    right:  -100px;
-    bottom: -100px;
-}
-form{
-    height: 570px;
-    width: 400px;
-    background-color: rgba(255,255,255,0.13);
-    position: absolute;
-    transform: translate(-50%,-50%);
-    top: 45%;
-    left: 50%;
-    border-radius: 10px;
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255,255,255,0.1);
-    box-shadow: 0 0 40px rgba(8,7,16,0.6);
-    padding: 50px 35px;
+                <div class="inp">
+                    <input type="password" name="password1" id="password" class="input" placeholder="Enter Your Password">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
 
-}
-form *{
-    font-family: 'Poppins',sans-serif;
-    color: #000000;
-    letter-spacing: 0.5px;
-    outline: none;
-    border: none;
-}
-form h3{
-    font-size: 32px;
-    font-weight: 500;
-    line-height: 42px;
-    text-align: center;
-}
-
-label{
-    display: block;
-    margin-top: 30px;
-    font-size: 16px;
-    font-weight: 500;
-}
-input{
-    display: block;
-    height: 50px;
-    width: 100%;
-    background-color: rgba(255,255,255,0.07);
-    border-radius: 3px;
-    padding: 0 10px;
-    margin-top: 8px;
-    font-size: 14px;
-    font-weight: 300;
-}
-::placeholder{
-    color: #000000;
-}
-button{
-    margin-top: 50px;
-    width: 100%;
-    background-color:#0d6efd;
-    color: #000000;
-    padding: 15px 0;
-    font-size: 18px;
-    font-weight: 600;
-    border-radius: 5px;
-    cursor: pointer;
-}
-.social{
-  margin-top: 30px;
-  display: flex;
-}
-.social div{
-  background: red;
-  width: 150px;
-  border-radius: 3px;
-  padding: 5px 10px 10px 5px;
-  background-color: rgba(255,255,255,0.27);
-  color: #eaf0fb;
-  text-align: center;
-}
-.social div:hover{
-  background-color: rgba(255,255,255,0.47);
-}
-.social .fb{
-  margin-left: 25px;
-}
-.social i{
-  margin-right: 4px;
-}
-
-    </style>
-</head>
-<body>
-<h1>{{ error }}</h1>
-    <div class="background">
-        <div class="shape"></div>
-        <div class="shape"></div>
-    </div>
-    <form method="POST">
-        {% csrf_token %}
-        <h3>Registration</h3>
-
-        <label for="username">Username</label>
-         <input type="text" placeholder="Enter Username" name="username" id="username">
+                <div class="inp">
+                    <input type="password" name="password2" id="password" class="input" placeholder="Confirm Your Password">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
 
 
-        <label for="password">Email</label>
-        <input type="text" placeholder="Enter your Email" name="email" id="email">
-
-
-        <label for="password">Password</label>
-        <input type="password" placeholder="Enter the Password" name="password1" id="password" required>
-
-        <label for="password">Confirm Password</label>
-        <input type="password" placeholder="Confirm Password" name="password2" id="password" required>
-
-
-        <button type="submit">Register</button>
-    </form>
-</body>
-</html>
-<!-- partial -->
-  
-</body>
-</html>
+                <button class="submit">Sign-Up</button>
+                <p class="footer"><a href="{% url 'login_0' %}" class="link">Already Have an Account?</a></p>
+            </form>
+            <div></div>
+            <div class="banner">
+                <h1 class="wel_text">Property Pursuit</h1><br>
+                <p class="para"></p>
+            </div>
+        </div>
+    </body>
+    </html>

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'adminapp',
     'clientapp',
     'dealerapp',
+    'landingpage',
 ]
 
 MIDDLEWARE = [
