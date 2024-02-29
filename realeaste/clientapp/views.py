@@ -37,9 +37,8 @@ def register_0(request):
 
 @login_required(login_url='login_0')
 def index(request):
-    data = models.property.objects.all()
-    photos = models.Image.objects.all()
-    context = {'data': data,'photos':photos}
+    data = models.property.objects.all().prefetch_related('image_set')
+    context = {'data': data}
     return render(request,'client/index.html',context=context)
 
 @login_required(login_url='login_0')

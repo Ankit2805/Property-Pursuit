@@ -26,9 +26,9 @@
                     <thead>
                     <th scope="col">#</th>
                     <th scope="col">Property Name</th>
-                    <th scope="col">Dealer Name</th>
+                    <th scope="col">Dealer</th>
                     <th scope="col">Address</th>
-                    <th scope="col">Rent Price</th>
+                    <th scope="col">Rent</th>
                     <th scope="col">Amenities</th>
                     <th scope="col">Images</th>
                     <th scope="col">Manage</th>
@@ -39,7 +39,7 @@
                  <tr>
                    <td>{{forloop.counter}}</td>
                    <td>{{d.p_name}}</td>
-                     <td>{{name}}</td>
+                     <td>{{d.user}}</td>
                      <td>{{d.p_address}}</td>
                    <td>{{d.p_rentprize}}</td>
                    <td>{{d.a_name}}</td>
@@ -47,7 +47,7 @@
                     <div id="demo" class="carousel slide" data-bs-ride="carousel">
                         <div id="carouselExampleIndicators{{ d.id }}" class="carousel slide" style="width: 79.5%;" data-bs-ride="carousel">
                           <div class="carousel-inner">
-                              {% for image in photos %}
+                              {% for image in d.image_set.all %}
                                   <div class="carousel-item {% if forloop.first %}active{% endif %}">
                                       <img src="{{ image.p_image.url }}" class="d-block" style="width:300px; height:200px;" alt="Image {{ forloop.counter }}">
                                       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators{{ d.id }}" data-bs-slide="prev">

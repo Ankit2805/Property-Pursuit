@@ -47,6 +47,16 @@
       <div>Property Address: {{ab.prop.p_address}}</div>
       <div>Rent Price: {{ab.prop.p_rentprize}}/-Month</div>
     </div>
+    <a href="{% url 'booking_history' %}" style="margin-left: 1020px;"><i class="bi bi-check-circle"></i></a>
+    <a href="{% url 'delete_booking' ab.pk %}" onclick="return ConfirmDelete()" style="margin-left: 1020px;">
+      <i class="bi bi-x-circle"></i>
+    <script>
+          function ConfirmDelete(){
+            var result= confirm("Confirm Delete?");
+            return result;
+        }
+     </script>
+    </a>
   </div>
   {% endfor %}
 </div>

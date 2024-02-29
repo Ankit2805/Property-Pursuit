@@ -11,7 +11,7 @@
     <div class="pagetitle">
       <h1>Property Details</h1>
         <h1>
-            <a href="{% url 'add_details' %}"><input style="margin-left:40%" type="button" value="Add Property" class="btn btn-primary"/></a>
+            <a href="{% url 'add_details' %}" style="margin-left:40%"><input type="button" value="Add Property" class="btn btn-primary"/></a>
         </h1>
     </div><!-- End Page Title -->
     <section class="section">
@@ -46,7 +46,7 @@
                    <td>
                      <div id="carouselExampleIndicators{{ d.id }}" class="carousel slide" style="width: 79.5%;" data-bs-ride="carousel">
                           <div class="carousel-inner">
-                              {% for image in photos %}
+                              {% for image in d.image_set.all %}
                                   <div class="carousel-item {% if forloop.first %}active{% endif %}">
                                       <img src="{{ image.p_image.url }}" class="d-block" style="width:300px; height:200px;" alt="Image {{ forloop.counter }}">
                                       <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators{{ d.id }}" data-bs-slide="prev">

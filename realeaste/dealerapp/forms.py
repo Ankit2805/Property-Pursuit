@@ -5,6 +5,7 @@ class detailsform(ModelForm):
     class Meta:
         model = models.property
         fields = "__all__"
+        exclude=('user',)
         widget = {
             'p_direction': forms.RadioSelect()
         }
@@ -13,6 +14,7 @@ class updateform(ModelForm):
     class Meta:
         model = models.property
         fields = "__all__"
+        exclude=('user',)
 
 class MyImageForm(forms.ModelForm):
     class Meta:

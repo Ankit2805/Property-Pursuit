@@ -50,6 +50,7 @@ def property_add_details(request):
         detailform = forms.detailsform(request.POST,request.FILES)
         if detailform.is_valid():
             object = detailform.save(commit=False)
+            object.user=request.user
             object.save()
 
             photos = request.FILES.getlist('p_image')
@@ -60,17 +61,18 @@ def property_add_details(request):
             return redirect(property_manage_details)
         else:
             print(detailform.errors)
-            return HttpResponse("<h1>Error</h1>")
-    return render(request, 'dealer/property-add_details.html')
+            return render(request,'dealer/property-add_details.html',{'error':'Pls fill out all the details.'})
+    else:
+     return render(request, 'dealer/property-add_details.html')
 
 @login_required(login_url='login_1')
 def property_manage_details(request):
-        data = models.property.objects.all()
-        photos = models.Image.objects.all()
-        return render(request, 'dealer/property-manage.html', {'P_E': data,'photos': photos})
+        data = models.property.objects.filter(user_id=request.user).prefetch_related('image_set')
+        # photos = models.Image.objects.all()
+        return render(request, 'dealer/property-manage.html', {'P_E': data})
 
 @login_required(login_url='login_1')
-def showdetails(request, id):
+def showdetails(request,id):
    d = models.property.objects.get(id=id)
    photos = models.Image.objects.all()
    return render(request, 'dealer/Show_Details.html',{'object':d,'photos': photos})
@@ -83,7 +85,7 @@ def edit_property(request,id):
 @login_required(login_url='login_1')
 def update_property(request,id):
     a = models.property.objects.get(id=id)
-    b=models.Image.objects.filter(proty_id=id)
+    b = models.Image.objects.filter(proty_id=id)
     if request.method == "POST":
         updatesform = forms.updateform(request.POST, instance=a)
         photos = request.FILES.getlist('p_image')
@@ -103,8 +105,7 @@ def update_property(request,id):
             return redirect(property_manage_details)
         else:
             print(updatesform.errors)
-            print(imageform.errors)
-            return HttpResponse("<h1>Error</h1>")
+            return render(request,'dealer/edit_property.html',{'error':'Pls fill out all the details.'})
     else:
         return render(request, 'dealer/edit_property.html',{'object':a})
 
@@ -119,11 +120,22 @@ def logout(request):
 
 @login_required(login_url='login_1')
 def booking_history(request):
-    br = bookingrequest.objects.all()
+    br = bookingrequest.objects.filter(user_id=request.user)
     return render(request, 'dealer/Booking_history.html', {'br': br})
 
+def delete_booking(request,id):
+    bookingrequest.objects.filter(id=id).delete()
+    return redirect(booking_history)
+
 @login_required(login_url='login_1')
-def contact(request):
+def feedback(request):
+    if request.method == "POST":
+        feedbackform = forms.Feedback(request.POST)
+        if feedbackform.is_valid():
+            feedbackform.save()
+            return redirect(dashboard_1)
+        else:
+            return render(request,'dealer/contact.html',{'error':'Pls fill out all the details.'})
     return render(request,'dealer/contact.html')
 
 @login_required(login_url='login_1')

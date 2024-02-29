@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'realeaste.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'realeaste',
+        'NAME': 'realestate',
         'HOST':'localhost',
         'USER':'root',
         'PASSWORD':'',

@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 # Create your models here.
 
 class property(models.Model):
@@ -22,6 +23,7 @@ class property(models.Model):
  WEST = 'west'
  dir_option = ((NORTH,NORTH),(SOUTH,SOUTH),(EAST,EAST),(WEST,WEST))
 
+ user = models.ForeignKey(User,on_delete=models.CASCADE)
  p_name = models.CharField(max_length=20)
  p_address = models.TextField(max_length=20)
  p_area = models.CharField(max_length=20)
@@ -46,5 +48,8 @@ class registration(models.Model):
     password2 = models.CharField(max_length=15)
 
 
-class MyImage(models.Model):
-   image = models.ImageField(upload_to='uploads/')
+class feedback(models.Model):
+   name = models.CharField(max_length=20)
+   email = models.CharField(max_length=50)
+   subject = models.CharField(max_length=50)
+   message = models.TextField(max_length=500)

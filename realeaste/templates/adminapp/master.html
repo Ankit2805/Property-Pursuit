@@ -46,7 +46,7 @@
   <header id="header" class="header fixed-top d-flex align-items-center" style="background-color: #fff;">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="{% url 'dashboard' %}" class="logo d-flex align-items-center">
         <img src="{% static 'adminapp/img/logo.png' %}" alt="">
         <span class="d-none d-lg-block">Admin App</span>
       </a>
@@ -74,7 +74,7 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="{% static 'adminapp/img/profile-img.jpg' %}" alt="Profile" class="rounded-circle">
+            <img src="{% static 'dealer/img/profile-image.jpeg' %}" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2">{{user.username}}</span>
           </a><!-- End Profile Iamge Icon -->
 
@@ -117,7 +117,13 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="{% url 'logout-2' %}">
+              <a class="dropdown-item d-flex align-items-center" onclick="return ConfirmLOGOUT()" href="{% url 'logout-2' %}">
+                <script>
+                                function ConfirmLOGOUT(){
+                                var result= confirm("Confirm Logout?");
+                                return result;
+                                }
+                </script>
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
               </a>
@@ -179,65 +185,12 @@
       <!-- End Booking nav -->
 
       <li class="nav-heading">Pages</li>
-
-<!--      <li class="nav-item">-->
-<!--        <a class="nav-link collapsed" href="pages-contact.html">-->
-<!--          <i class="bi bi-file-earmark"></i>-->
-<!--          <span>Rent agreement</span>-->
-<!--        </a>-->
-<!--      </li>-->
-
       <li class="nav-item">
         <a class="nav-link collapsed" href="{% url 'profile-2' %}">
           <i class="bi bi-person"></i>
           <span>Profile</span>
         </a>
       </li>
-
-<!--      <li class="nav-item">-->
-<!--        <a class="nav-link collapsed" href="{% url 'contact' %}">-->
-<!--          <i class="bi bi-envelope"></i>-->
-<!--          <span>Contact</span>-->
-<!--        </a>-->
-<!--      </li>-->
-
-<!--      <li class="nav-item">-->
-<!--        <a class="nav-link collapsed" href="pages-contact.html">-->
-<!--          <i class="bi bi-chat-square-text"></i>-->
-<!--          <span>Feedback</span>-->
-<!--        </a>-->
-<!--      </li>-->
-
-      <!-- End Contact Page Nav -->
-
-<!--      <li class="nav-item">-->
-<!--        <a class="nav-link collapsed" href="pages-register.html">-->
-<!--          <i class="bi bi-card-list"></i>-->
-<!--          <span>Register</span>-->
-<!--        </a>-->
-<!--      </li>&lt;!&ndash; End Register Page Nav &ndash;&gt;-->
-
-<!--      <li class="nav-item">-->
-<!--        <a class="nav-link collapsed" href="pages-login.html">-->
-<!--          <i class="bi bi-box-arrow-in-right"></i>-->
-<!--          <span>Login</span>-->
-<!--        </a>-->
-<!--      </li>&lt;!&ndash; End Login Page Nav &ndash;&gt;-->
-
-<!--      <li class="nav-item">-->
-<!--        <a class="nav-link collapsed" href="pages-error-404.html">-->
-<!--          <i class="bi bi-dash-circle"></i>-->
-<!--          <span>Error 404</span>-->
-<!--        </a>-->
-<!--      </li>&lt;!&ndash; End Error 404 Page Nav &ndash;&gt;-->
-
-<!--      <li class="nav-item">-->
-<!--        <a class="nav-link collapsed" href="pages-blank.html">-->
-<!--          <i class="bi bi-file-earmark"></i>-->
-<!--          <span>Blank</span>-->
-<!--        </a>-->
-<!--      </li>&lt;!&ndash; End Blank Page Nav &ndash;&gt;-->
-
     </ul>
 
   </aside>

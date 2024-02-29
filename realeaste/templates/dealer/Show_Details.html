@@ -42,17 +42,17 @@
       <div id="carouselExampleIndicators{{ d.id }}" class="carousel slide" style="width: 50%;" data-bs-ride="carousel">
           <div class="carousel-inner">
               {% for image in photos %}
-              <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                  <img src="{{ image.p_image.url }}" class="d-block" style="width:500px; height:300px;" alt="Image {{ forloop.counter }}">
-                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators{{ d.id }}" data-bs-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span class="visually-hidden">Previous</span>
-                  </button>
-                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators{{ d.id }}" data-bs-slide="next">
-                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                      <span class="visually-hidden">Next</span>
-                  </button>
-              </div>
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <img src="{{ image.p_image.url }}" class="d-block" style="width:500px; height:300px;" alt="Image {{ forloop.counter }}">
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators{{ d.id }}" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators{{ d.id }}" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                      </button>
+                </div>
               {% endfor %}
           </div>
       </div>
