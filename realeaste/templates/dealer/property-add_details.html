@@ -20,14 +20,14 @@
     <section class="section" >
       <div class="row">
         <div class="col-lg-6">
-
+          <h3 style="color:red;">{{error}}</h3>
           <div class="card" style="width: 200%;">
             <div class="card-body">
               <h5 class="card-title">Property Details Forms</h5>
 
               <!-- Property Details Form -->
               <form method="POST" enctype="multipart/form-data">
-                  {% csrf_token %}
+                {% csrf_token %}
                 <div class="row mb-3">
                   <label for="inputText" class="col-sm-2 col-form-label">Property Name</label>
                   <div class="col-sm-6">

@@ -25,15 +25,15 @@ class property(models.Model):
 
  user = models.ForeignKey(User,on_delete=models.CASCADE)
  p_name = models.CharField(max_length=20)
- p_address = models.TextField(max_length=20)
- p_area = models.CharField(max_length=20)
- p_type = models.CharField(max_length=15,choices=prop_option,default='APPARTMENT')
+ p_address = models.TextField(max_length=500)
+ p_area = models.CharField(max_length=500)
+ p_type = models.CharField(max_length=20,choices=prop_option,default='APPARTMENT')
  p_furnishingtype = models.CharField(max_length=20,choices=furn_option,default='NOT')
  p_age_type = models.CharField(max_length=20,choices=age_option,default=MONTH)
  p_age = models.PositiveIntegerField()
  p_direction = models.CharField(max_length=20,choices=dir_option)
  p_rentprize = models.PositiveIntegerField()
- a_name = models.CharField(max_length=200)
+ a_name = models.CharField(max_length=500)
 
 
 class Image(models.Model):

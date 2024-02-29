@@ -44,7 +44,7 @@ def index(request):
 @login_required(login_url='login_0')
 def property_details(request,id):
     pd = models.property.objects.get(id=id)
-    photos = models.Image.objects.all()
+    photos = models.Image.objects.filter(proty_id=pd)
     return render(request, 'client/property-details.html',{'o':pd, 'photos':photos})
 
 @login_required(login_url='login_0')

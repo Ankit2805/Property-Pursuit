@@ -83,12 +83,12 @@ def delete_property_2(request,id):
 @login_required(login_url='login')
 def showdetails_2(request, id):
     d = models.property.objects.get(id=id)
-    photos = models.Image.objects.all()
+    photos = models.Image.objects.filter(proty_id=d)
     return render(request, 'adminapp/Show_Details.html', {'object': d, 'photos': photos})
 
 @login_required(login_url='login')
 def booking_history(request):
-    br = bookingrequest.objects.filter(user_id=request.user)
+    br = bookingrequest.objects.all()
     return render(request, 'adminapp/Booking_history.html', {'br': br})
 
 @login_required(login_url='login')
