@@ -1,6 +1,4 @@
-django install --> pip install django
-sub command --> django-admin
-new project --> django-admin startproject projectname
+# How to run project
 cd projectname
 run --> py manage.py runserver
 
