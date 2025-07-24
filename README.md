@@ -8,8 +8,8 @@ price, and photos. The property search feature allows users to search for
 properties on the System by specifying criteria such as location, price, and
 number of bedrooms. The rental request feature allows users to submit a rental
 request for a property by providing their details to request for booking property.
-The admin dashboard allows the admin to manage the System and its
-users.
+The admin dashboard allows the admin to manage the System, Properties and its
+Users.
 
 
 
