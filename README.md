@@ -10,7 +10,12 @@ number of bedrooms. The rental request feature allows users to submit a rental
 request for a property by providing their details to request for booking property.
 The admin dashboard allows the admin to manage the System and its
 users.
-/n/n/n/n
+
+
+
+
+
+
 
 <--------- Dealer Views --------->
 <img width="1893" height="906" alt="Screenshot 2025-07-24 150453" src="https://github.com/user-attachments/assets/5ee2bc1a-1fdb-48e5-a825-3f7a19a157b0" />
@@ -21,11 +26,22 @@ users.
 <img width="1911" height="896" alt="Screenshot 2025-07-24 151048" src="https://github.com/user-attachments/assets/1b5937e1-1501-4d13-9be2-bb3e124eb686" />
 
 
+
+
+
+
+
+
 <--------- Client Views --------->
 <img width="1897" height="904" alt="Screenshot 2025-07-24 151159" src="https://github.com/user-attachments/assets/84e0ab0c-23d1-4c44-a6da-64c1f46ea47e" />
 <img width="1899" height="908" alt="Screenshot 2025-07-24 151606" src="https://github.com/user-attachments/assets/222a0de6-125b-47fd-b1ae-7416da1bbf4f" />
 <img width="1902" height="900" alt="Screenshot 2025-07-24 151642" src="https://github.com/user-attachments/assets/e68f70a5-fde2-433d-af2f-8c40233d2e4c" />
 <img width="1918" height="900" alt="Screenshot 2025-07-24 151759" src="https://github.com/user-attachments/assets/e58bafd0-d340-4238-8b63-e170d40b6aff" />
+
+
+
+
+
 
 
 <--------- Admin Views --------->
