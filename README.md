@@ -25,7 +25,7 @@ CREATE DATABASE realestate;
 <br>
 
 ### 2. Ensure your settings.py is configured to connect to MySQL:
-python
+```python
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -36,6 +36,7 @@ DATABASES = {
         'PORT': '3306',
     }
 }
+```
 <br>
 
 ### 3. Run the following commands in your terminal to set up the schema and start the server:
